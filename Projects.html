@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects - Arjun Patil</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+    :root {
+      --primary-color: #a855f7;
+      --primary-color-dark: #9333ea;
+      --secondary-color: #ca8a04;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --extra-light: #faf5ff;
+      --max-width: 1200px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, var(--extra-light) 0%, #f8fafc 100%);
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 99;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav__content {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 1.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .logo a {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      transition: 0.3s;
+    }
+
+    nav .logo a:hover {
+      color: var(--primary-color-dark);
+    }
+
+    nav .checkbox {
+      display: none;
+    }
+
+    nav input {
+      display: none;
+    }
+
+    nav .checkbox i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+      transition: left 0.3s;
+    }
+
+    ul li a {
+      padding: 0.5rem 1rem;
+      border: 2px solid transparent;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: 0.3s;
+    }
+
+    ul li a:hover {
+      border-top-color: var(--secondary-color);
+      border-bottom-color: var(--secondary-color);
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 768px) {
+      nav .checkbox {
+        display: block;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        display: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      nav input:checked ~ ul {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+    }
+
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .project {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+    }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .project:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+    }
+
+    .project-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: white;
+    }
+
+    .project h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .project p {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--secondary-color), #d97706);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    .project-link:hover {
+      background: linear-gradient(135deg, #d97706, var(--secondary-color));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(202, 138, 4, 0.3);
+    }
+
+    .project-link i {
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-link:hover i {
+      transform: translateX(3px);
+    }
+
+    .stats-section {
+      background: white;
+      padding: 60px 20px;
+      margin: 40px 0;
+    }
+
+    .stats-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .project {
+        padding: 25px;
+      }
+      
+      .hero-section {
+        padding: 120px 20px 40px;
+      }
+      
+      .projects-container {
+        padding: 60px 20px;
+      }
+      
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .project:nth-child(1) { animation-delay: 0.1s; }
+    .project:nth-child(2) { animation-delay: 0.2s; }
+    .project:nth-child(3) { animation-delay: 0.3s; }
+    .project:nth-child(4) { animation-delay: 0.4s; }
+    .project:nth-child(5) { animation-delay: 0.5s; }
+    .project:nth-child(6) { animation-delay: 0.6s; }
+    .project:nth-child(7) { animation-delay: 0.7s; }
+
+    .projects-container {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.3s forwards;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav__content">
+      <div class="logo"><a href="#">Arjun.</a></div>
+      <label for="check" class="checkbox">
+        <i class="ri-menu-line"></i>
+      </label>
+      <input type="checkbox" name="check" id="check" />
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Resume.html">Resume</a></li>
+        <li><a href="Projects.html">Projects</a></li>
+        <li><a href="Certificates.html">Certificates</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>My Projects</h1>
+      <p>Explore my collection of creative projects and technical implementations. Each project represents a unique challenge and learning experience in my development journey.</p>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">7+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Technologies Used</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Passion Driven</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="projects-container">
+    <div class="projects-grid">
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-netflix-fill"></i>
+        </div>
+        <h2>Netflix Clone</h2>
+        <p>A Netflix clone of the previous website of Netflix. The clone replicates the design of Netflix but is not interactive.</p>
+        <a href="Projects/Netflix Clone/NClone.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-shopping-cart-2-fill"></i>
+        </div>
+        <h2>Ecommerce Platform</h2>
+        <p>An ecommerce platform for buying and selling products. It includes features like product listings and a shopping cart.</p>
+        <a href="Projects/Ecommerce Platform/index.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-image-edit-fill"></i>
+        </div>
+        <h2>Image Background Remover</h2>
+        <p>A tool for removing backgrounds from images. It uses advanced algorithms to detect and remove backgrounds.</p>
+        <a href="Projects/Image Background Remover/index.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-file-pdf-fill"></i>
+        </div>
+        <h2>PDF Editor</h2>
+        <p>A tool for editing PDF documents. It allows users to modify text and other elements within a PDF file.</p>
+        <a href="Projects/PDF Editor/main.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-todo-fill"></i>
+        </div>
+        <h2>To-Do List Website</h2>
+        <p>A simple to-do list website built with HTML, CSS, and JavaScript.</p>
+        <a href="Projects/To-Do list Website/main.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-store-2-fill"></i>
+        </div>
+        <h2>Ecommerce Website</h2>
+        <p>A fully functional ecommerce website built with HTML, CSS, and JavaScript.</p>
+        <a href="Projects/Ecommerce Website/main.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <i class="ri-code-box-fill"></i>
+        </div>
+        <h2>Advanced CSS</h2>
+        <p>A project showcasing advanced CSS techniques and layouts.</p>
+        <a href="Projects/Adv CSS/advCSS.html" target="_blank" class="project-link">
+          View Project <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkbox = document.getElementById('check');
+      const menuItems = document.querySelectorAll('ul li a');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+          checkbox.checked = false;
+        });
+      });
+
+      const projects = document.querySelectorAll('.project');
+      projects.forEach(project => {
+        project.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        project.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+
+      const statsNumbers = document.querySelectorAll('.stat-number');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            const finalValue = target.textContent;
+            animateNumber(target, finalValue);
+          }
+        });
+      });
+
+      statsNumbers.forEach(stat => observer.observe(stat));
+
+      function animateNumber(element, finalValue) {
+        const numericValue = parseInt(finalValue.replace(/\D/g, ''));
+        const suffix = finalValue.replace(/\d/g, '');
+        let currentValue = 0;
+        const increment = numericValue / 30;
+        
+        const timer = setInterval(() => {
+          currentValue += increment;
+          if (currentValue >= numericValue) {
+            element.textContent = finalValue;
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(currentValue) + suffix;
+          }
+        }, 50);
+      }
+    });
+  </script>
+</body>
+</html>

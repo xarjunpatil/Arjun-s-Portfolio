@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amazing CSS Effects</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      z-index: 1000;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+    }
+
+    /* 1. Parallax & 3D Scrolling Experience */
+    .parallax {
+      background-image: url('https://wallpaperaccess.com/full/3164127.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      /* Adding perspective for 3D-like feel */
+      perspective: 1px;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .parallax .content {
+      position: relative;
+      /* Simulate depth using translateZ */
+      transform: translateZ(0.5px) scale(0.5);
+      padding: 50px;
+      color: #fff;
+      text-align: center;
+    }
+    .parallax h2 {
+      font-size: 3rem;
+    }
+
+    /* 2. Glassmorphism & Neumorphism Designs */
+    .glass-section {
+      background: url('https://wallpaperaccess.com/full/1247169.jpg') no-repeat center/cover;
+      position: relative;
+    }
+    .glass-card {
+      max-width: 400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .glass-card h2 {
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .glass-card p {
+      color: #f0f0f0;
+    }
+
+    /* 3. Animated Gradient & Particle Backgrounds */
+    .gradient-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .gradient-section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      z-index: -2;
+    }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Particle effect using pseudo-elements */
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: float 6s ease-in-out infinite;
+    }
+    /* Create several particles with varying sizes/positions */
+    .particle:nth-child(1) { width: 10px; height: 10px; top: 20%; left: 10%; animation-duration: 5s; }
+    .particle:nth-child(2) { width: 8px; height: 8px; top: 50%; left: 80%; animation-duration: 7s; }
+    .particle:nth-child(3) { width: 12px; height: 12px; top: 70%; left: 30%; animation-duration: 6s; }
+    .particle:nth-child(4) { width: 6px; height: 6px; top: 40%; left: 50%; animation-duration: 4s; }
+    .particle:nth-child(5) { width: 10px; height: 10px; top: 80%; left: 70%; animation-duration: 8s; }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.7; }
+      50% { transform: translateY(-20px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.7; }
+    }
+    .gradient-section .content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .gradient-section h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 4. Interactive Card & Grid Layouts */
+    .grid-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .grid-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .grid-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+    .grid-card h3 {
+      margin-bottom: 10px;
+    }
+    .grid-card p {
+      font-size: 0.9rem;
+    }
+
+    /* 5. CSS-Only Art & Microinteractions */
+    .css-art {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      position: relative;
+    }
+    .css-art .shape {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      /* Create an interesting pentagon shape */
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      transition: transform 0.3s, background 0.3s;
+    }
+    .css-art .shape:hover {
+      transform: rotate(360deg) scale(1.1);
+      background: linear-gradient(135deg, #fd79a8, #e17055);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Amazing CSS Effects</h1>
+  </header>
+
+  <!-- 1. Parallax & 3D Scrolling Experience -->
+  <section class="parallax">
+    <div class="content">
+      <h2>Parallax & 3D Scrolling</h2>
+      <p>Experience depth and movement as you scroll.</p>
+    </div>
+  </section>
+
+  <!-- 2. Glassmorphism & Neumorphism Designs -->
+  <section class="glass-section">
+    <div class="glass-card">
+      <h2>Glassmorphism & Neumorphism</h2>
+      <p>Frosted glass effects with soft, extruded shadows for a futuristic look.</p>
+    </div>
+  </section>
+
+  <!-- 3. Animated Gradient & Particle Backgrounds -->
+  <section class="gradient-section">
+    <div class="content">
+      <h2>Animated Gradient & Particles</h2>
+      <p>Engaging, dynamic backgrounds that bring energy to the design.</p>
+    </div>
+    <!-- Multiple particle divs -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </section>
+
+  <!-- 4. Interactive Card & Grid Layouts -->
+  <section>
+    <h2 style="text-align: center; margin-bottom: 20px;">Interactive Cards</h2>
+    <div class="grid-section">
+      <div class="grid-card">
+        <h3>Card One</h3>
+        <p>Hover to see the effect.</p>
+      </div>
+      <div class="grid-card">
+        <h3>Card Two</h3>
+        <p>Responsive and interactive.</p>
+      </div>
+      <div class="grid-card">
+        <h3>Card Three</h3>
+        <p>Smooth transitions and clean design.</p>
+      </div>
+      <div class="grid-card">
+        <h3>Card Four</h3>
+        <p>Perfect for a dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CSS-Only Art & Microinteractions -->
+  <section class="css-art">
+    <div class="shape"></div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me - Arjun</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        margin-bottom: 40px;
+        background-color: #ffffff;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #8b5cf6;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav a {
+        color: #4a5568;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav a:hover {
+        color: #8b5cf6;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .info-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .form-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2d3748;
+        margin-bottom: 30px;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .info-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        transform: translateY(0);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+      }
+
+      .info-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .info-card p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #4a5568;
+        font-size: 0.95rem;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .btn {
+        padding: 15px 35px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: #e2e8f0;
+        color: #4a5568;
+      }
+
+      .btn-secondary:hover {
+        background: #cbd5e0;
+        transform: translateY(-2px);
+      }
+
+      .success-message {
+        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-element:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        width: 60px;
+        height: 60px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .floating-element:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+    <header class="header">
+      <div class="logo">Arjun.</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Projects.html">Projects</a>
+        <a href="Certificates.html">Certificates</a>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="main-content">
+        <div class="info-section">
+          <h2 class="section-title">Why Hire Me?</h2>
+
+          <div class="info-card">
+            <h3>🚀 Full-Stack Expertise</h3>
+            <p>
+              Proficient in modern web technologies including React, Node.js,
+              Python, and cloud platforms. I deliver end-to-end solutions that
+              scale.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>💡 Problem Solver</h3>
+            <p>
+              I thrive on challenging projects and complex problems. My
+              analytical mindset helps me find innovative solutions quickly and
+              efficiently.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>⚡ Fast Delivery</h3>
+            <p>
+              I understand the importance of deadlines. With agile methodologies
+              and efficient workflows, I ensure timely project completion.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>🎯 Quality Focused</h3>
+            <p>
+              Clean, maintainable code and user-centered design are my
+              priorities. I believe in delivering excellence, not just
+              functionality.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>🤝 Great Communication</h3>
+            <p>
+              Regular updates, clear documentation, and collaborative approach
+              ensure smooth project execution and client satisfaction.
+            </p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2 class="section-title">Let's Work Together</h2>
+
+          <form id="hireForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Company/Organization</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Your company name"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+1 (555) 123-4567"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="projectType">Project Type *</label>
+                <select id="projectType" name="projectType" required>
+                  <option value="">Select project type</option>
+                  <option value="web-development">Web Development</option>
+                  <option value="mobile-app">Mobile App</option>
+                  <option value="api-development">API Development</option>
+                  <option value="database-design">Database Design</option>
+                  <option value="consulting">Technical Consulting</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget">Budget Range</label>
+                <select id="budget" name="budget">
+                  <option value="">Select budget range</option>
+                  <option value="under-5k">Under $5,000</option>
+                  <option value="5k-15k">$5,000 - $15,000</option>
+                  <option value="15k-50k">$15,000 - $50,000</option>
+                  <option value="50k-plus">$50,000+</option>
+                  <option value="discuss">Let's Discuss</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="timeline">Expected Timeline</label>
+              <select id="timeline" name="timeline">
+                <option value="">Select timeline</option>
+                <option value="asap">ASAP (Rush Job)</option>
+                <option value="1-month">Within 1 Month</option>
+                <option value="1-3-months">1-3 Months</option>
+                <option value="3-6-months">3-6 Months</option>
+                <option value="6-months-plus">6+ Months</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="projectDetails">Project Details *</label>
+              <textarea
+                id="projectDetails"
+                name="projectDetails"
+                required
+                placeholder="Please describe your project requirements, goals, and any specific features you need. The more details you provide, the better I can understand your needs."
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="additionalInfo">Additional Information</label>
+              <textarea
+                id="additionalInfo"
+                name="additionalInfo"
+                placeholder="Any additional information, special requirements, or questions you'd like to share?"
+              ></textarea>
+            </div>
+
+            <div class="button-group">
+              <button type="submit" class="btn btn-primary">
+                Send Inquiry
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="clearForm()"
+              >
+                Clear Form
+              </button>
+            </div>
+
+            <div id="successMessage" class="success-message">
+              <strong>Thank you!</strong> Your inquiry has been sent
+              successfully. I'll get back to you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("hireForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+
+          const emailBody = createEmailBody(data);
+
+          const subject = encodeURIComponent(
+            `New Project Inquiry from ${data.name}`
+          );
+          const body = encodeURIComponent(emailBody);
+          const mailtoLink = `mailto:xarjunpatil@gmail.com?subject=${subject}&body=${body}`;
+
+          window.location.href = mailtoLink;
+
+          document.getElementById("successMessage").style.display = "block";
+
+          setTimeout(() => {
+            clearForm();
+            document.getElementById("successMessage").style.display = "none";
+          }, 3000);
+        });
+
+      function createEmailBody(data) {
+        return `
+New Project Inquiry Details:
+
+Client Information:
+- Name: ${data.name}
+- Company: ${data.company || "Not specified"}
+- Email: ${data.email}
+- Phone: ${data.phone || "Not provided"}
+
+Project Details:
+- Project Type: ${data.projectType}
+- Budget Range: ${data.budget || "Not specified"}
+- Timeline: ${data.timeline || "Not specified"}
+
+Project Description:
+${data.projectDetails}
+
+Additional Information:
+${data.additionalInfo || "None provided"}
+
+---
+This inquiry was submitted through your portfolio website on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}.
+            `.trim();
+      }
+
+      function clearForm() {
+        document.getElementById("hireForm").reset();
+      }
+
+      document
+        .querySelectorAll("input, select, textarea")
+        .forEach((element) => {
+          element.addEventListener("focus", function () {
+            this.parentElement.style.transform = "translateY(-2px)";
+          });
+
+          element.addEventListener("blur", function () {
+            this.parentElement.style.transform = "translateY(0)";
+          });
+        });
+    </script>
+  </body>
+</html>

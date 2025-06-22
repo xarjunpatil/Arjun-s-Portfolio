@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resume - Arjun Patil</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+        :root {
+            --primary-color: #a855f7;
+            --primary-color-dark: #9333ea;
+            --secondary-color: #ca8a04;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --extra-light: #faf5ff;
+            --max-width: 1200px;
+            --border-color: #e5e7eb;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f9fafb;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            z-index: 99;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav__content {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .logo a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+
+        nav .logo a:hover {
+            color: var(--primary-color-dark);
+        }
+
+        nav .checkbox {
+            display: none;
+        }
+
+        nav input {
+            display: none;
+        }
+
+        nav .checkbox i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            list-style: none;
+            transition: left 0.3s;
+        }
+
+        ul li a {
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        ul li a:hover {
+            border-top-color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            nav .checkbox {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #ffffff;
+                display: none;
+            }
+
+            nav input:checked~ul {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #ffffff;
+            margin: 120px auto 40px auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        header .title {
+            font-size: 1.3em;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        section {
+            margin-bottom: 32px;
+        }
+
+        section h2 {
+            font-size: 1.5em;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .contact {
+            background-color: var(--bg-light);
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .contact p {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .contact strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .contact a {
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: var(--primary-color-dark);
+            text-decoration: underline;
+        }
+
+        .summary p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .skills ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .skills li {
+            background-color: #ffffff;
+            border: 2px solid var(--border-color);
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .skills li:hover {
+            border-color: var(--primary-color);
+            background-color: var(--extra-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);
+        }
+
+        .job {
+            margin-bottom: 28px;
+            padding: 24px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .job:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .job h3 {
+            font-size: 1.4em;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .job .date {
+            font-size: 0.95em;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .job p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .education {
+            background-color: var(--bg-light);
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .education p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 24px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 100px 20px 40px 20px;
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            .skills ul {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin-bottom: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.9em;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            .job, .contact, .education {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav__content">
+            <div class="logo"><a href="#">Arjun.</a></div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check" />
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="Certificates.html">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Arjun Patil</h1>
+            <p class="title">Coder &amp; Programmer</p>
+        </header>
+
+        <section class="contact">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> <a href="mailto:xarjunpatil@gmail.com">xarjunpatil@gmail.com</a></p>
+            <p><strong>Phone:</strong> 9420942208</p>
+        </section>
+
+        <section class="summary">
+            <h2>Professional Summary</h2>
+            <p>Passionate programmer and coder with extensive experience in HTML, CSS, JavaScript, and backend
+                development. Adept at creating efficient, scalable, and user-friendly applications. I like to Innovate
+                Websites And Also I am a Innovator, I Make Websites beautiful. And I make AI Chatbots.</p>
+        </section>
+
+        <section class="skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>HTML5, CSS3, JavaScript</li>
+                <li>Python, Java, C++, TypeScript</li>
+                <li>React, Angular, Node.js</li>
+                <li>Git, GitHub</li>
+            </ul>
+        </section>
+
+        <section class="experience">
+            <h2>Professional Experience</h2>
+            <div class="job">
+                <h3>Web Developer</h3>
+                <p class="date">Still Getting Knowledge on This Topic</p>
+                <p>Developing and maintaining web applications using modern frameworks and tools. I work on lots of
+                    projects to improve my Skill.</p>
+            </div>
+            <div class="job">
+                <h3>AI/ML Engineering</h3>
+                <p class="date">Still Getting Knowledge on This Topic</p>
+                <p>I learn lots of thing about AI like python libraries and build my own AI named "Genius". And teaching
+                    my AI model Daily.</p>
+            </div>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <p>Learning On Every Topic Related To Programming</p>
+            <p>Upgrading Myself Day By Day | Use AI Very-Well</p>
+        </section>
+    </div>
+</body>
+
+</html>
